@@ -4,18 +4,24 @@ console.log('App.js is running!!!!!!!!');
 
 // JSX - JavaScript XML
 
+var app = {
+    title: 'Some Title',
+    subtitle: 'Some subtitle'
+};
+
 var template = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
-        'This is JSX from app.js!!!!'
+        app.title.toUpperCase() + '!'
     ),
     React.createElement(
         'p',
         null,
-        'This is some info!'
+        app.subtitle + '!',
+        '  '
     ),
     React.createElement(
         'ol',
@@ -43,26 +49,25 @@ var template = React.createElement(
     )
 );
 
-var template2 = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        'Scott Grobe'
-    ),
-    React.createElement(
-        'p',
-        null,
-        'Age: 35'
-    ),
-    React.createElement(
-        'p',
-        null,
-        'Location: Randleman'
-    )
-);
+// var userName = 'Scott';
+// var userAge = 35;
+// var userLocation = 'Durham'
+
+// var user = {
+//     name: 'Scott',
+//     age: 35,
+//     location: 'Durham'
+// };
+
+
+// var template2 = (
+//     <div>
+//         <h1>{user.name.toUpperCase() + '!'}</h1>
+//         <p>Age: {user.age + 1}</p>
+//         <p>Location: {'Mercedes-Benz of ' + user.location }</p>
+//     </div>
+// );
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(template2, appRoot);
+ReactDOM.render(template, appRoot);
