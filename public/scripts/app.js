@@ -6,7 +6,8 @@ console.log('App.js is running!!!!!!!!');
 
 var app = {
     title: 'Some Title',
-    subtitle: 'Some subtitle'
+    subtitle: 'Some subtitle',
+    options: ['One', 'Two']
 };
 
 var template = React.createElement(
@@ -17,11 +18,20 @@ var template = React.createElement(
         null,
         app.title.toUpperCase() + '!'
     ),
-    React.createElement(
+    app.subtitle && React.createElement(
         'p',
         null,
         app.subtitle + '!',
         '  '
+    ),
+    app.options.length > 0 ? React.createElement(
+        'p',
+        null,
+        'Here are your options'
+    ) : React.createElement(
+        'p',
+        null,
+        'No options'
     ),
     React.createElement(
         'ol',
@@ -49,24 +59,43 @@ var template = React.createElement(
     )
 );
 
-// var userName = 'Scott';
-// var userAge = 35;
-// var userLocation = 'Durham'
+var userName = 'Scott';
+var userAge = 35;
+var userLocation = 'Durham';
 
-// var user = {
-//     name: 'Scott',
-//     age: 35,
-//     location: 'Durham'
-// };
+var user = {
+    name: 'Scott',
+    age: 35,
+    location: 'Durham'
+};
 
+function getLocation(location) {
+    if (location) {
+        return React.createElement(
+            'p',
+            null,
+            'Location: ',
+            'Mercedes-Benz of ' + location
+        );
+    }
+}
 
-// var template2 = (
-//     <div>
-//         <h1>{user.name.toUpperCase() + '!'}</h1>
-//         <p>Age: {user.age + 1}</p>
-//         <p>Location: {'Mercedes-Benz of ' + user.location }</p>
-//     </div>
-// );
+var template2 = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        user.name ? user.name.toUpperCase() + '!' : 'Anonymous'
+    ),
+    user.age && user.age >= 18 && React.createElement(
+        'p',
+        null,
+        'Age: ',
+        user.age + 1
+    ),
+    getLocation(user.location)
+);
 
 var appRoot = document.getElementById('app');
 
