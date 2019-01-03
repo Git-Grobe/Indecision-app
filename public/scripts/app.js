@@ -1,39 +1,18 @@
-'use strict';
+"use strict";
 
-//ES5 functions
-var square = function square(x) {
-    return x * x;
+var _arguments = arguments;
+// arguments object - no longer bound with arrow functions
+
+var add = function add(a, b) {
+    console.log(arguments); //have access to arguments
+    return a + b;
 };
+console.log(add(55, 1, 1001));
 
-//ES5 named function
-function square2(x) {
-    return x * x;
-}
-
-//ES6 functions
-var squareArrow = function squareArrow(x) {
-    return x * x;
+var addArrow = function addArrow(a, b) {
+    console.log(_arguments); //no longer have access to arguments
+    return a + b;
 };
+console.log(addArrow(100, 1, 1001));
 
-//concise ES6 expression syntax, implicitly returning one thing
-var squareArrow2 = function squareArrow2(x) {
-    return x * x;
-};
-
-//ES5
-console.log(square(9));
-console.log(square2(9));
-
-//ES6 arrow function
-console.log(squareArrow(8));
-
-//ES6 concise arrow function
-console.log(squareArrow2(4));
-
-//coding challenge, create function that returns just the first name of string
-
-var getFirstName = function getFirstName(fullName) {
-    return fullName.split(' ')[0];
-};
-
-console.log(getFirstName('First Last'));
+// this keyword - no longer bound with arrow functions
