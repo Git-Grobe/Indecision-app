@@ -23,6 +23,31 @@ const template = (
     </div>
 );
 
+const userName = 'Scott';
+const userAge = 35;
+const userLocation = 'Durham'
+
+const user = {
+    name: 'Scott',
+    age: 35,
+    location: 'Durham'
+};
+
+function getLocation(location) {
+    if (location) {
+        return <p>Location: {'Mercedes-Benz of ' + location}</p>;
+    }
+}
+
+
+const template2 = (
+    <div>
+        <h1>{user.name ? user.name.toUpperCase() + '!' : 'Anonymous'}</h1>
+        {(user.age && user.age >= 18) && <p>Age: {user.age + 1}</p>}
+        {getLocation(user.location)}
+    </div>
+);
+
 const appRoot = document.getElementById('app');
 
 ReactDOM.render(template, appRoot);

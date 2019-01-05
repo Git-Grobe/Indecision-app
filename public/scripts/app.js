@@ -1,72 +1,60 @@
 'use strict';
 
-// arguments object - no longer bound with arrow functions
+console.log('App.js is running!!!!!!!!');
 
-var add = function add(a, b) {
-    console.log(arguments); //have access to arguments
-    return a + b;
-};
-console.log(add(55, 1, 1001));
+// JSX - JavaScript XML
 
-var addArrow = function addArrow(a, b) {
-    // console.log(arguments); //no longer have access to arguments
-    return a + b;
-};
-console.log(addArrow(100, 1, 1001));
-
-// this keyword - no longer bound
-
-
-//es5
-
-// const user = {
-//     name: 'Scott',
-//     cities: ['Durham', 'Philadelphia', 'Raleigh'],
-//     printPlacesLived: function () {
-//         console.log(this.name);
-//         console.log(this.cities);
-
-//         const that = this;
-
-//         this.cities.forEach(function (city) {
-//             console.log(that.name + ' has lived in ' + city);
-//         });
-//     }
-// };
-
-// user.printPlacesLived();
-
-
-//arrow function uses parents this value
-var user = {
-    name: 'Scott',
-    cities: ['Durham', 'Philadelphia', 'Raleigh'],
-    printPlacesLived: function printPlacesLived() {
-        var _this = this;
-
-        return this.cities.map(function (city) {
-            return _this.name + ' has loved in ' + city;
-        });
-    }
+var app = {
+    title: 'Some Title',
+    subtitle: 'Some subtitle',
+    options: ['One', 'Two']
 };
 
-console.log(user.printPlacesLived());
+var template = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        app.title.toUpperCase() + '!'
+    ),
+    app.subtitle && React.createElement(
+        'p',
+        null,
+        app.subtitle + '!',
+        '  '
+    ),
+    React.createElement(
+        'p',
+        null,
+        app.options.length > 0 ? 'Here are your options' : 'No options'
+    ),
+    React.createElement(
+        'ol',
+        null,
+        React.createElement(
+            'li',
+            null,
+            'ah'
+        ),
+        React.createElement(
+            'li',
+            null,
+            'no'
+        ),
+        React.createElement(
+            'li',
+            null,
+            'oh'
+        ),
+        React.createElement(
+            'li',
+            null,
+            'ya'
+        )
+    )
+);
 
-// Challenge 
-// numbers - array of numbers
-// multiplyBy - single number
-// multiply - return a new array where the numbers have been multiplied
+var appRoot = document.getElementById('app');
 
-var multiplier = {
-    numbers: [2, 4, 6],
-    multiplyBy: 10,
-    multiply: function multiply() {
-        var _this2 = this;
-
-        return this.numbers.map(function (number) {
-            return number * _this2.multiplyBy;
-        });
-    }
-};
-
-console.log(multiplier.multiply());
+ReactDOM.render(template, appRoot);
